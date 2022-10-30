@@ -8,6 +8,8 @@ import pageobject.HomePage;
 import services.Service;
 
 
+import java.time.Duration;
+
 import static org.junit.matchers.JUnitMatchers.containsString;
 
 @RunWith(Parameterized.class)
@@ -50,15 +52,16 @@ public class RunTestQuest {
         driver = new ChromeDriver();
         objService = new Service(driver);
         objHomePage = new HomePage(driver);
-        objService.InInput();
+        objService.inInputWebsite();
         objService.click(objHomePage.getCookie());
-        objService.click(objHomePage.getmodQuest());
+        objService.click(objHomePage.getModQuest());
+
     }
 
 
     // коллекция тестов для проверки блока Вопросы о важном
     @Test
-    public void test_n() {
+    public void checkingQuestions() {
         objService.click(objHomePage.getListQuestions().get(index));
         Assert.assertThat("Текс не совпадает с ОР: ", objHomePage.getListAnswer().get(index).getText(), containsString(checkedText));
     }

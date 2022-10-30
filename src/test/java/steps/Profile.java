@@ -34,14 +34,14 @@ public class Profile {
     }
 
     // Метод заполнения данных по заказу
-    public Profile Orderrer() {
+    public Profile orderrer() {
         objOrderPage = new OrderPage(driver);
         objService = new Service(driver);
 
         objService.waitPageElement(objOrderPage.getTitleRent());
         objOrderPage.getCalendar().click();
         objOrderPage.getDate().click();
-        objOrderPage.getLeaseTime().click();
+        objOrderPage.getRentalPeriod().click();
         objOrderPage.getRentalTimeOneDay().click();
 
         return this;

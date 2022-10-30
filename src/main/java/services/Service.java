@@ -9,17 +9,19 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import pageobject.HomePage;
 
+
 // Класс описывает большинство однообразных действий
 public class Service {
     public HomePage objHomePage;
     private WebDriver driver;
+
 
     public Service(WebDriver driver) {
         this.driver = driver;
     }
 
     // Метод переходит на сайт
-    public Service InInput() {
+    public Service inInputWebsite() {
         driver.get("https://qa-scooter.praktikum-services.ru/");
         return this;
     }
@@ -39,7 +41,7 @@ public class Service {
 
     // Метод производит ожидание появления выбранного элемента
     public Service waitPageElement(By element) {
-        new WebDriverWait(driver, 15).until(ExpectedConditions.visibilityOfElementLocated(element));
+        new WebDriverWait(driver, 1).until(ExpectedConditions.visibilityOfElementLocated(element));
         return this;
     }
 
@@ -57,6 +59,19 @@ public class Service {
         } catch (org.openqa.selenium.NoSuchElementException e) {
             return false;
         }
+    }
+
+    // Метод предоставляет выбор через какую кнопку начинать делать заказ
+    public Service clickOrderButton(int numberOfButton) {
+        objHomePage = new HomePage(driver);
+        if (numberOfButton == 0) {
+            click(objHomePage.getOrderedTop());
+            System.out.println("Нажали кнопку Заказать - вверху");
+        } else if (numberOfButton == 1) {
+            click(objHomePage.getOrderedDown());
+            System.out.println("Нажали кнопку Заказать - внизу");
+        }
+        return this;
     }
 
 }

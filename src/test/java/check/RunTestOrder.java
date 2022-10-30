@@ -33,24 +33,24 @@ public class RunTestOrder {
     private final String phoneNumber;
     private final String station;
     private final String comment;
-    private final String orderButton;
+    private final int numberOfButton;
 
-    public RunTestOrder(String name, String surname, String address, String phoneNumber, String station, String comment, String orderButton) {
+    public RunTestOrder(String name, String surname, String address, String phoneNumber, String station, String comment, int numberOfButton) {
         this.name = name;
         this.surname = surname;
         this.address = address;
         this.phoneNumber = phoneNumber;
         this.station = station;
         this.comment = comment;
-        this.orderButton = orderButton;
+        this.numberOfButton = numberOfButton;
     }
 
 
     @Parameterized.Parameters
     public static Object[][] getData() {
         return new Object[][]{
-                {"Антон", "Чехов", "119049, г Москва, ул Донская, д 18", "89001002030", "Сокол", "Комментарий в тесте № 1", "Заказ вверху"},
-                {"Александр", "Пушкин", "101000, г Москва, ул Пушкина, д 7", "+79991002039", "Лубянка", " Комментарий в тесте № 2", "Заказ внизу"}
+                {"Антон", "Чехов", "119049, г Москва, ул Донская, д 18", "89001002030", "Сокол", "Комментарий в тесте № 1", 0},
+                {"Александр", "Пушкин", "101000, г Москва, ул Пушкина, д 7", "+79991002039", "Лубянка", " Комментарий в тесте № 2", 1}
         };
 
     }
@@ -66,31 +66,26 @@ public class RunTestOrder {
 
         System.out.println("test start");
 
-        objService.InInput()
+        objService.inInputWebsite()
                 .click(objHomePage.getCookie())
-                .waitPageElement(objHomePage.getImg());
+                .waitPageElement(objHomePage.getImage());
     }
 
 
     @Test // Создание заказа
-    public void orderIn() {
+    public void checkingOrderCompletion() {
 
-        if (orderButton.equals("Заказ вверху")) {
-            objService.click(objHomePage.getOrderedTop());
-        } else {
-            objService.click(objHomePage.getOrderedDown());
-        }
-
+        objService.clickOrderButton(numberOfButton);
         objProfile.profileData(name, surname, address, phoneNumber, station);
-        objService.click(objOrderPage.getNext());
-        objProfile.Orderrer();
-        objService.click(objOrderPage.getGreyScooter())
+        objService.click(objOrderPage.getNextButton());
+        objProfile.orderrer();
+        objService.click(objOrderPage.getColorScooter())
                 .inputText(objOrderPage.getComment(), comment)
-                .click((objOrderPage.getOrder()))
+                .click((objOrderPage.getOrderButton()))
                 .click((objOrderPage.getPlaceAnOrderYes()));
 
         assertTrue("Отсутствует сообщение об успешном завершении заказа",
-                objService.isElementPresent(objOrderPage.orderPlaced));
+                objService.isElementPresent(objOrderPage.ORDER_PLACED_HEADER));
 
     }
 
