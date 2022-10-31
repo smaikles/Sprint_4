@@ -13,13 +13,15 @@ public class HomePage {
     public HomePage(WebDriver driver) {
         this.driver = driver;
     }
+    public HomePage() {
+    }
 
     // Локаторы на главной странице
     private final By ACCEPT_COOKIE_BUTTON = By.id("rcc-confirm-button");  // кнопка закрыть куки
     private final By IMG_SCOOTER = By.xpath("//img[@alt='Scooter blueprint']"); // элемент на главной станице картинка
     private final By HEADING_QUEST = By.xpath("//div[text() = 'Вопросы о важном']"); // элемент заголовка Вопросы о важном
-    private final By ORDER_BUTTON_TOP = By.className("Button_Button__ra12g"); // кнопка заказать вверху сайта
-    private final By ORDER_BUTTON_DOWN = By.xpath("//button[contains(@class, 'Button_Middle')]"); // кнопка заказать внизу сайта
+    public final By ORDER_BUTTON_TOP = By.className("Button_Button__ra12g"); // кнопка заказать вверху сайта
+    public final By ORDER_BUTTON_DOWN = By.xpath("//button[contains(@class, 'Button_Middle')]"); // кнопка заказать внизу сайта
 
     // Локаторы из списка вопросов и ответов
     private final By LIST_QUESTIONS = By.xpath("//*[@class='accordion__button']"); // элемент вопросов

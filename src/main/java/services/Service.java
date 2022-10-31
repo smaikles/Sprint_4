@@ -32,8 +32,16 @@ public class Service {
         return this;
     }
 
-    // Метод делает скрол и клик по выбранного элемента
+    // Метод делает скрол и клик по выбранному элемента
     public Service click(WebElement element) {
+        scroll(element);
+        element.click();
+        return this;
+    }
+
+    // Метод делает скрол и клик по выбранному элементу
+    public Service click(By elementLokator) {
+        WebElement element = driver.findElement(elementLokator);
         scroll(element);
         element.click();
         return this;
@@ -59,19 +67,6 @@ public class Service {
         } catch (org.openqa.selenium.NoSuchElementException e) {
             return false;
         }
-    }
-
-    // Метод предоставляет выбор через какую кнопку начинать делать заказ
-    public Service clickOrderButton(int numberOfButton) {
-        objHomePage = new HomePage(driver);
-        if (numberOfButton == 0) {
-            click(objHomePage.getOrderedTop());
-            System.out.println("Нажали кнопку Заказать - вверху");
-        } else if (numberOfButton == 1) {
-            click(objHomePage.getOrderedDown());
-            System.out.println("Нажали кнопку Заказать - внизу");
-        }
-        return this;
     }
 
 }
