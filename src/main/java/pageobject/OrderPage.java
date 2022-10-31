@@ -4,10 +4,12 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import static services.InitDriver.driver;
+
 
 // Класс содержит локаторы и вебэлементы для оформления заказа
 public class OrderPage {
-    private WebDriver driver;
+//    private WebDriver driver;
 
 
     // Локаторы для проверки второго сценария
@@ -22,16 +24,16 @@ public class OrderPage {
     private final By INPUT_DATE = By.xpath("//div[contains(@class, 'day--today')]"); // поле выбора даты доставки
     private final By INPUT_RENTAL_PERIOD = By.className("Dropdown-placeholder"); // элемент выбора срока аренды
     private final By INPUT_RENTAL_DAY = By.xpath(".//div[@class='Dropdown-menu']/div[text()='сутки']"); // элемент выбора срока аренды
-    private final By CHECKBOX_COLOUR = By.id("grey"); // элемент выбора цвета
+    public final By CHECKBOX_COLOUR = By.id("grey"); // элемент выбора цвета
     private final By INPUT_COMMENT = By.xpath("//input[@placeholder ='Комментарий для курьера']"); // поле коментария
     private final By NEXT_BUTTON = By.cssSelector(".Button_Button__ra12g.Button_Middle__1CSJM"); // кнопка далее
     private final By ORDER_BUTTON = By.xpath("//div[@class='Order_Buttons__1xGrp']//button[contains(text(), 'Заказать')]"); // кнопка заказать
     private final By ORDER_YES_BUTTON = By.xpath("//button[contains(text(), 'Да')]"); // кнопка подтверждения заказа
     public final By ORDER_PLACED_HEADER = By.xpath("//div[(text()= 'Заказ оформлен')]");  // элемент страницы подтвержденного заказа
 
-    public OrderPage(WebDriver driver) {
-        this.driver = driver;
-    }
+//    public OrderPage(WebDriver driver) {
+//        this.driver = driver;
+//    }
 
 
     // Преобразование локаторов в вебэлементы

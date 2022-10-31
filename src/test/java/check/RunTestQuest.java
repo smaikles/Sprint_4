@@ -51,7 +51,7 @@ public class RunTestQuest {
 
         driver = new ChromeDriver();
         objService = new Service(driver);
-        objHomePage = new HomePage(driver);
+        objHomePage = new HomePage();
         objService.inInputWebsite();
         objService.click(objHomePage.getCookie());
         objService.click(objHomePage.getModQuest());

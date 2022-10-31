@@ -14,13 +14,12 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import pageobject.HomePage;
 import pageobject.OrderPage;
+import services.InitDriver;
 import steps.Profile;
 import services.Service;
 
 @RunWith(Parameterized.class)
-public class RunTestOrder {
-
-    public ChromeDriver driver;
+public class RunTestOrder extends InitDriver {
 
 
     public Service objService;
@@ -60,18 +59,17 @@ public class RunTestOrder {
 
     @Before
     public void setUpOrder() {
-        driver = new ChromeDriver();
 
-        objOrderPage = new OrderPage(driver);
-        objHomePage = new HomePage(driver);
+        objOrderPage = new OrderPage();
+        objHomePage = new HomePage();
         objProfile = new Profile(driver);
         objService = new Service(driver);
 
         System.out.println("test start");
 
-        objService.inInputWebsite()
-                .click(objHomePage.getCookie())
-                .waitPageElement(objHomePage.getImage());
+
+        objService.click(objHomePage.getCookie())
+                .waitPageElement(objHomePage.IMG_SCOOTER);
     }
 
 
@@ -82,7 +80,7 @@ public class RunTestOrder {
         objProfile.profileData(name, surname, address, phoneNumber, station);
         objService.click(objOrderPage.getNextButton());
         objProfile.orderrer();
-        objService.click(objOrderPage.getColorScooter())
+        objService.click(objOrderPage.CHECKBOX_COLOUR)
                 .inputText(objOrderPage.getComment(), comment)
                 .click((objOrderPage.getOrderButton()))
                 .click((objOrderPage.getPlaceAnOrderYes()));
@@ -92,10 +90,5 @@ public class RunTestOrder {
 
     }
 
-    @After
-    public void teardown() {
-        System.out.println("test close");
-        driver.quit();
 
     }
-}

@@ -41,10 +41,8 @@ public class Service {
 
     // Метод делает скрол и клик по выбранному элементу
     public Service click(By elementLokator) {
-        WebElement element = driver.findElement(elementLokator);
-        scroll(element);
-        element.click();
-        return this;
+        WebElement element = new WebDriverWait(driver, 1).until(ExpectedConditions.visibilityOfElementLocated(elementLokator));
+        return click(element);
     }
 
     // Метод производит ожидание появления выбранного элемента

@@ -3,22 +3,24 @@ package pageobject;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import services.InitDriver;
 
 import java.util.List;
 
-// Класс содержит локаторы и вебэлементы главной странице
-public class HomePage {
-    private WebDriver driver;
+import static services.InitDriver.driver;
 
-    public HomePage(WebDriver driver) {
-        this.driver = driver;
-    }
+// Класс содержит локаторы и вебэлементы главной странице
+public class HomePage  {
+
+
+
+
     public HomePage() {
     }
 
     // Локаторы на главной странице
     private final By ACCEPT_COOKIE_BUTTON = By.id("rcc-confirm-button");  // кнопка закрыть куки
-    private final By IMG_SCOOTER = By.xpath("//img[@alt='Scooter blueprint']"); // элемент на главной станице картинка
+    public final By IMG_SCOOTER = By.xpath("//img[@alt='Scooter blueprint']"); // элемент на главной станице картинка
     private final By HEADING_QUEST = By.xpath("//div[text() = 'Вопросы о важном']"); // элемент заголовка Вопросы о важном
     public final By ORDER_BUTTON_TOP = By.className("Button_Button__ra12g"); // кнопка заказать вверху сайта
     public final By ORDER_BUTTON_DOWN = By.xpath("//button[contains(@class, 'Button_Middle')]"); // кнопка заказать внизу сайта
