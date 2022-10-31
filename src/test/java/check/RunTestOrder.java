@@ -1,6 +1,6 @@
 package check;
 
-import org.junit.After;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -9,8 +9,6 @@ import static org.junit.Assert.assertTrue;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.openqa.selenium.By;
-import org.openqa.selenium.chrome.ChromeDriver;
-
 
 import pageobject.HomePage;
 import pageobject.OrderPage;
@@ -62,8 +60,8 @@ public class RunTestOrder extends InitDriver {
 
         objOrderPage = new OrderPage();
         objHomePage = new HomePage();
-        objProfile = new Profile(driver);
-        objService = new Service(driver);
+        objProfile = new Profile();
+        objService = new Service();
 
         System.out.println("test start");
 
@@ -89,6 +87,4 @@ public class RunTestOrder extends InitDriver {
                 objService.isElementPresent(objOrderPage.ORDER_PLACED_HEADER));
 
     }
-
-
-    }
+}

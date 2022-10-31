@@ -1,7 +1,6 @@
 package pageobject;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import static services.InitDriver.driver;
@@ -9,7 +8,6 @@ import static services.InitDriver.driver;
 
 // Класс содержит локаторы и вебэлементы для оформления заказа
 public class OrderPage {
-//    private WebDriver driver;
 
 
     // Локаторы для проверки второго сценария
@@ -30,10 +28,6 @@ public class OrderPage {
     private final By ORDER_BUTTON = By.xpath("//div[@class='Order_Buttons__1xGrp']//button[contains(text(), 'Заказать')]"); // кнопка заказать
     private final By ORDER_YES_BUTTON = By.xpath("//button[contains(text(), 'Да')]"); // кнопка подтверждения заказа
     public final By ORDER_PLACED_HEADER = By.xpath("//div[(text()= 'Заказ оформлен')]");  // элемент страницы подтвержденного заказа
-
-//    public OrderPage(WebDriver driver) {
-//        this.driver = driver;
-//    }
 
 
     // Преобразование локаторов в вебэлементы

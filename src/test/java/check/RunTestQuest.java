@@ -3,19 +3,16 @@ package check;
 import org.junit.*;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-import org.openqa.selenium.chrome.ChromeDriver;
+
 import pageobject.HomePage;
+import services.InitDriver;
 import services.Service;
 
-
-import java.time.Duration;
 
 import static org.junit.matchers.JUnitMatchers.containsString;
 
 @RunWith(Parameterized.class)
-public class RunTestQuest {
-
-    public static ChromeDriver driver;
+public class RunTestQuest extends InitDriver {
 
     public static HomePage objHomePage;
     public static Service objService;
@@ -46,15 +43,19 @@ public class RunTestQuest {
     }
 
     //Выполнится окрытие браузера и вход на сайт, перемещение к блоку вопросов
-    @BeforeClass
-    public static void globalSetup() {
+    //   @BeforeClass
+    @Before
+    public void globalSetup() {
 
-        driver = new ChromeDriver();
-        objService = new Service(driver);
+
+        objService = new Service();
         objHomePage = new HomePage();
-        objService.inInputWebsite();
-        objService.click(objHomePage.getCookie());
-        objService.click(objHomePage.getModQuest());
+
+
+        System.out.println("test start");
+
+        objService.click(objHomePage.getCookie())
+                .waitPageElement(objHomePage.HEADING_QUEST);
 
     }
 
@@ -66,9 +67,4 @@ public class RunTestQuest {
         Assert.assertThat("Текс не совпадает с ОР: ", objHomePage.getListAnswer().get(index).getText(), containsString(checkedText));
     }
 
-    @AfterClass
-    public static void teardown() {
-        System.out.println("test close");
-        driver.quit();
-    }
 }

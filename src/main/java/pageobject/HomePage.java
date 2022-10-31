@@ -1,34 +1,25 @@
 package pageobject;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import services.InitDriver;
 
 import java.util.List;
 
 import static services.InitDriver.driver;
 
 // Класс содержит локаторы и вебэлементы главной странице
-public class HomePage  {
-
-
-
-
-    public HomePage() {
-    }
+public class HomePage {
 
     // Локаторы на главной странице
     private final By ACCEPT_COOKIE_BUTTON = By.id("rcc-confirm-button");  // кнопка закрыть куки
     public final By IMG_SCOOTER = By.xpath("//img[@alt='Scooter blueprint']"); // элемент на главной станице картинка
-    private final By HEADING_QUEST = By.xpath("//div[text() = 'Вопросы о важном']"); // элемент заголовка Вопросы о важном
+    public final By HEADING_QUEST = By.xpath("//div[text() = 'Вопросы о важном']"); // элемент заголовка Вопросы о важном
     public final By ORDER_BUTTON_TOP = By.className("Button_Button__ra12g"); // кнопка заказать вверху сайта
     public final By ORDER_BUTTON_DOWN = By.xpath("//button[contains(@class, 'Button_Middle')]"); // кнопка заказать внизу сайта
 
     // Локаторы из списка вопросов и ответов
     private final By LIST_QUESTIONS = By.xpath("//*[@class='accordion__button']"); // элемент вопросов
     private final By LIST_ANSWER = By.xpath("//div[@data-accordion-component='AccordionItemPanel']"); // элемент ответов
-
 
     // Преобразование локаторов в вебэлементы
     public By getImage() {

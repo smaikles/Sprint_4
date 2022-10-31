@@ -1,26 +1,23 @@
 package steps;
 
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import pageobject.OrderPage;
 import services.Service;
+
+import static services.InitDriver.driver;
 
 // Класс содержит методы для заполнение данных по заказу
 public class Profile {
 
     public OrderPage objOrderPage;
-    private WebDriver driver;
     public Service objService;
 
-    public Profile(WebDriver driver) {
-        this.driver = driver;
-    }
 
     // Метод заполнения профиля клиента
     public Profile profileData(String name, String surname, String address, String phoneNumber, String station) {
-        objOrderPage = new OrderPage(driver);
-        objService = new Service(driver);
+        objOrderPage = new OrderPage();
+        objService = new Service();
 
         objService.waitPageElement(objOrderPage.getTitleOrder());
         objOrderPage.getName().sendKeys(name);
@@ -35,8 +32,8 @@ public class Profile {
 
     // Метод заполнения данных по заказу
     public Profile orderrer() {
-        objOrderPage = new OrderPage(driver);
-        objService = new Service(driver);
+        objOrderPage = new OrderPage();
+        objService = new Service();
 
         objService.waitPageElement(objOrderPage.getTitleRent());
         objOrderPage.getCalendar().click();

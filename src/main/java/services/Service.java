@@ -9,22 +9,12 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import pageobject.HomePage;
 
+import static services.InitDriver.driver;
+
 
 // Класс описывает большинство однообразных действий
 public class Service {
     public HomePage objHomePage;
-    private WebDriver driver;
-
-
-    public Service(WebDriver driver) {
-        this.driver = driver;
-    }
-
-    // Метод переходит на сайт
-    public Service inInputWebsite() {
-        driver.get("https://qa-scooter.praktikum-services.ru/");
-        return this;
-    }
 
     // Метод скролит до выбранного элемента
     public Service scroll(WebElement element) {
